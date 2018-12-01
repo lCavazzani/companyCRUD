@@ -25,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
         countRecords();
 
+        Button BTNShowCompanys = findViewById(R.id.Btnshowcompanys);
+
+        BTNShowCompanys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ShowCompanysActivity.class));
+            }
+        });
+
         Button buttonCreateCompany = findViewById(R.id.Btnaddcompany);
         buttonCreateCompany.setOnClickListener(new View.OnClickListener() {
             @Override

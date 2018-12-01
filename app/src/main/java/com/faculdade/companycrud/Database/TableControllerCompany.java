@@ -2,9 +2,13 @@ package com.faculdade.companycrud.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.faculdade.companycrud.Models.Company;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TableControllerCompany extends DatabaseHandler {
 
@@ -41,5 +45,48 @@ public class TableControllerCompany extends DatabaseHandler {
 
         return recordCount;
 
+    }
+
+    public List<Company> read() {
+
+        List<Company> recordsList = new ArrayList<Company>();
+
+        String sql = "SELECT * FROM companys ORDER BY id DESC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                int id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
+                String companyName = cursor.getString(cursor.getColumnIndex("name"));
+                String companyCNPJ = cursor.getString(cursor.getColumnIndex("cnpj"));
+                String companyValue = cursor.getString(cursor.getColumnIndex("value"));
+                String companyInscricao = cursor.getString(cursor.getColumnIndex("inscricao"));
+                String companyRazao = cursor.getString(cursor.getColumnIndex("razao"));
+                String companyPhone = cursor.getString(cursor.getColumnIndex("phone"));
+
+
+                Company company = new Company();
+                company.setId(id);
+                company.setName(companyName);
+                company.setValue(companyValue);
+                company.setRazao(companyRazao);
+                company.setPhone(companyPhone);
+                company.setInscricao(companyInscricao);
+                company.setCnpj(companyInscricao);
+
+
+
+                recordsList.add(company);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return recordsList;
     }
 }

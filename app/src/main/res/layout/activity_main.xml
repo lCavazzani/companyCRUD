@@ -22,4 +22,13 @@
         android:text="0 records found"
         android:padding="1dp" />
 
+    <Button
+        android:id="@+id/Btnshowcompanys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp"
+        android:text="Show Company" />
+
 </RelativeLayout>
