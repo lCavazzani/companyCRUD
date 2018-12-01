@@ -150,4 +150,15 @@ public class TableControllerCompany extends DatabaseHandler {
         return updateSuccessful;
 
     }
+
+    public boolean delete(int id) {
+        boolean deleteSuccessful = false;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        deleteSuccessful = db.delete("companys", "id ='" + id + "'", null) > 0;
+        db.close();
+
+        return deleteSuccessful;
+
+    }
 }

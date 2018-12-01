@@ -29,6 +29,20 @@ public class OnLongClickListenerCompanyRecord implements View.OnLongClickListene
                         if (item == 0) {
                             editRecord(Integer.parseInt(id));
                         }
+                        else if (item == 1) {
+
+                            boolean deleteSuccessful = new TableControllerCompany(context).delete(Integer.parseInt(id));
+
+                            if (deleteSuccessful){
+                                Toast.makeText(context, "Company record was deleted.", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(context, "Unable to delete Company record.", Toast.LENGTH_SHORT).show();
+                            }
+
+//                            ((MainActivity) context).countRecords();
+                            ((ShowCompanysActivity) context).readRecords();
+
+                        }
 
                         dialog.dismiss();
 
