@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
                                         boolean createSuccessful = new TableControllerCompany(context).create(company);
                                         if(createSuccessful){
-                                            Toast.makeText(context, "Student information was saved.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(context, "Company information was saved.", Toast.LENGTH_SHORT).show();
                                         }else{
-                                            Toast.makeText(context, "Unable to save student information.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(context, "Unable to save Company information.", Toast.LENGTH_SHORT).show();
                                         }
 
                                         dialog.cancel();

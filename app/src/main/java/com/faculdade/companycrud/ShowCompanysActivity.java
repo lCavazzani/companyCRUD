@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.faculdade.companycrud.Database.TableControllerCompany;
+import com.faculdade.companycrud.Helpers.OnLongClickListenerCompanyRecord;
 import com.faculdade.companycrud.Models.Company;
 
 import java.util.List;
@@ -45,8 +46,10 @@ public class ShowCompanysActivity extends AppCompatActivity {
                 textViewStudentItem.setPadding(0, 10, 0, 10);
                 textViewStudentItem.setText(textViewContents);
                 textViewStudentItem.setTag(Integer.toString(id));
+                textViewStudentItem.setOnLongClickListener(new OnLongClickListenerCompanyRecord());
 
                 linearLayoutRecords.addView(textViewStudentItem);
+
             }
 
         }
