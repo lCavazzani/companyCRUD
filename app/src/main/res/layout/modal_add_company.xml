@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/Etcompanyname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:hint="Company Name"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/Etcompanycnpj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Etcompanyname"
+        android:hint="Company CNPJ"
+        android:singleLine="true" />
+    <EditText
+        android:id="@+id/Etcompanyphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Etcompanycnpj"
+        android:hint="Company Phone"
+        android:singleLine="true" />
+    <EditText
+        android:id="@+id/Etcompanyrazao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Etcompanyphone"
+        android:hint="Company Razao"
+        android:singleLine="true" />
+    <EditText
+        android:id="@+id/Etcompanyinscricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Etcompanyrazao"
+        android:hint="Company Inscricao"
+        android:singleLine="true" />
+    <EditText
+        android:id="@+id/Etcompanyvalue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Etcompanyinscricao"
+        android:hint="Company Value"
+        android:singleLine="true" />
+
+</RelativeLayout>
