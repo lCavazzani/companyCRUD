@@ -10,6 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.faculdade.companycrud.Database.TableControllerCompany;
+import com.faculdade.companycrud.Models.Company;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        countRecords();
+
         Button buttonCreateCompany = findViewById(R.id.Btnaddcompany);
         buttonCreateCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = v.getRootView().getContext();
+                final Context context = v.getRootView().getContext();
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 final View formElementsView = inflater.inflate(R.layout.modal_add_company, null, false);
                 final EditText ETCompanyName = formElementsView.findViewById(R.id.Etcompanyname);
@@ -37,11 +44,38 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Add",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        String companyName = ETCompanyName.getText().toString();
+                                        String companyCNPJ = ETCompanyCNPJ.getText().toString();
+                                        String companyInscricao = ETCompanyInscricao.getText().toString();
+                                        String companyPhone = ETCompanyPhone.getText().toString();
+                                        String companyRazao = ETCompanyRazao.getText().toString();
+                                        String companyValue = ETCompanyValue.getText().toString();
+
+                                        Company company = new Company();
+                                        company.setName(companyName);
+                                        company.setCnpj(companyCNPJ);
+                                        company.setInscricao(companyInscricao);
+                                        company.setPhone(companyPhone);
+                                        company.setRazao(companyRazao);
+                                        company.setValue(companyValue);
+
+                                        boolean createSuccessful = new TableControllerCompany(context).create(company);
+                                        if(createSuccessful){
+                                            Toast.makeText(context, "Student information was saved.", Toast.LENGTH_SHORT).show();
+                                        }else{
+                                            Toast.makeText(context, "Unable to save student information.", Toast.LENGTH_SHORT).show();
+                                        }
+
                                         dialog.cancel();
                                     }
 
                                 }).show();
             }
         });
+    }
+    public void countRecords() {
+        int recordCount = new TableControllerCompany(this).count();
+        TextView textViewRecordCount = findViewById(R.id.textViewRecordCount);
+        textViewRecordCount.setText(recordCount + " records found.");
     }
 }
