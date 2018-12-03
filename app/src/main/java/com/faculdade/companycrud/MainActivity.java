@@ -34,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button BTNShowGraph = findViewById(R.id.Btnshowgraph);
+
+        BTNShowGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, GraphViewActivity.class));
+            }
+        });
+
         Button buttonCreateCompany = findViewById(R.id.Btnaddcompany);
         buttonCreateCompany.setOnClickListener(new View.OnClickListener() {
             @Override
